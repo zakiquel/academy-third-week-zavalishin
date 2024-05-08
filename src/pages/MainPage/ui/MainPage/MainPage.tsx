@@ -5,9 +5,7 @@ import cls from './MainPage.module.scss'
 const MainPage = () => (
     <main
       className={cls.MainPage}
-    >
-      <h1>Main Page</h1>
-    </main>
+     />
   );
 
 export default memo(MainPage);
