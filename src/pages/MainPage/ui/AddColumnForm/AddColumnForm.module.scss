@@ -1,0 +1,13 @@
+.AddColumnForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font: var(--font-m)
+}
+
+.button {
+  border-radius: 5px;
+}

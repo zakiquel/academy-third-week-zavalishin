@@ -1,0 +1,93 @@
+.Task {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--gray);
+  color: var(--secondary-color);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.title {
+  font: var(--font-l);
+  font-weight: 600;
+}
+
+.description {
+  font: var(--font-m);
+}
+
+.tags {
+  display: flex;
+  font: var(--font-s);
+  gap: 10px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.type {
+  border: 1px solid var(--tag-border);
+  border-radius: 5px;
+  padding: 0 2px;
+}
+
+.complexity {
+  border-radius: 5px;
+  padding: 1px 3px 1px 10px;
+  position: relative;
+}
+
+.complexity::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 38%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.Hard {
+  background: var(--red-light);
+
+  &:before {
+    background: var(--red);
+  }
+}
+
+.Medium {
+  background: var(--blue-light);
+
+  &:before {
+    background: var(--blue);
+  }
+}
+
+.Easy {
+  background: var(--greenS);
+
+  &:before {
+    background: var(--green);
+  }
+}
+
+.Done {
+  background: var(--greenS);
+}
+
+.InProgress {
+  background: var(--red);
+}
+
+.NotStarted {
+  background: var(--gray);
+}
+

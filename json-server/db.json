@@ -7,6 +7,54 @@
         {
           "id": "1",
           "title": "Task Title",
+          "description": "Здесь каждому классу Hard, Medium и Easy присваиваются разные цвета для background-color в псевдоэлементе ::before, чтобы изменить цвет точки в зависимости от уровня сложности.",
+          "type": "Practice",
+          "status": "Done",
+          "complexity": "Hard"
+        },
+        {
+          "id": "2",
+          "title": "Task Title",
+          "description": "Task Description",
+          "type": "Communication",
+          "status": "In progress",
+          "complexity": "Medium"
+        },
+        {
+          "id": "3",
+          "title": "Task Title",
+          "description": "Task Description",
+          "type": "Education",
+          "status": "Not started",
+          "complexity": "Easy"
+        },
+        {
+          "id": "1",
+          "title": "Task Title",
+          "description": "Task Description",
+          "type": "Practice",
+          "status": "Done",
+          "complexity": "Hard"
+        },
+        {
+          "id": "2",
+          "title": "Task Title",
+          "description": "Task Description",
+          "type": "Communication",
+          "status": "In progress",
+          "complexity": "Medium"
+        },
+        {
+          "id": "3",
+          "title": "Task Title",
+          "description": "Task Description",
+          "type": "Education",
+          "status": "Not started",
+          "complexity": "Easy"
+        },
+        {
+          "id": "1",
+          "title": "Task Title",
           "description": "Task Description",
           "type": "Practice",
           "status": "Done",
@@ -31,34 +79,8 @@
       ]
     },
     {
-      "id": "2",
-      "title": "Column Title",
-      "tasks": [
-        {
-          "id": "1",
-          "title": "Task Title",
-          "description": "Task Description",
-          "type": "Practice",
-          "status": "Done",
-          "complexity": "Hard"
-        },
-        {
-          "id": "2",
-          "title": "Task Title",
-          "description": "Task Description",
-          "type": "Communication",
-          "status": "In progress",
-          "complexity": "Hard"
-        },
-        {
-          "id": "3",
-          "title": "Task Title",
-          "description": "Task Description",
-          "type": "Education",
-          "status": "Not started",
-          "complexity": "Hard"
-        }
-      ]
+      "title": "fdfdsf",
+      "id": "cC9z7bA"
     }
   ]
 }

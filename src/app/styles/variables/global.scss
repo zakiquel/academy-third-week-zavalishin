@@ -3,8 +3,8 @@
   --font-family-text: "Inter", sans-serif;
 
   // Small size font
-  --font-size-s: 10px;
-  --font-line-s: 18px;
+  --font-size-s: 14px;
+  --font-line-s: 22px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-title);
 
   // Medium size font
@@ -13,8 +13,8 @@
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-title);
 
   // Large size font
-  --font-size-l: 24px;
-  --font-line-l: 32px;
+  --font-size-l: 26px;
+  --font-line-l: 35px;
   --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-title);
 
   // XLarge size font
@@ -28,12 +28,29 @@
 
   // Цвета
   --overlay-color: rgba(0 0 0 / 60%);
-  --border: #edf2f7;
+  --border: #b7b7b7;
+  --tag-border: #7e7e7e;
   --box-shadow: rgba(229, 229, 229, 0.7);
-  --footer-bg: #EAEAEA;
-  --white: #F9F9F9;
-  --purple: #6359AB;
-  --red: #F25D59;
+  --column-white: #F5F5FE;
+  --column-purple: #EBEBFF;
+  --column-red: #F9E3FD;
+  --column-cherry: #ECEDEF;
+  --column-aqua: #E7F8F8;
+  --column-aquamarine: #E3F3FC;
+  --column-yellow: #FFF6E1;
+  --column-green: #EEF8E8;
+  --column-pink: #FBE7E5;
+  --column-brown: #FBE7E5;
+  --green: #A3D982;
+  --greenS: #EEF8E8;
+  --red: #F0766B;
+  --red-light: #FBE7E5;
+  --blue: #6CBFEF;
+  --blue-light: #E3F3FC;
+  --purple: #6253DA;
+  --purple-light: #EBEBFF;
+  --gray: #BBBFC4;
+  --gray-light: #E8EDF3;
 
   // Размеры
   --navbar-height: 80px;

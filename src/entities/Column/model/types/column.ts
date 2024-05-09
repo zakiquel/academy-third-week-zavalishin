@@ -6,8 +6,8 @@ export enum TaskType {
 
 export enum TaskStatus {
   DONE = 'Done',
-  IN_PROGRESS = 'In progress',
-  NOT_STARTED = 'Not started',
+  IN_PROGRESS = 'In Progress',
+  NOT_STARTED = 'Not Started',
 }
 
 export enum TaskComplexity {
@@ -28,5 +28,5 @@ export interface Task {
 export interface Column {
   id: string;
   title: string;
-  tasks: Task[];
+  tasks?: Task[];
 }

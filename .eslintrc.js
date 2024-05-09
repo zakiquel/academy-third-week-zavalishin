@@ -57,6 +57,7 @@ module.exports = {
       'error',
       {
         alias: '@',
+        ignoreImportPatterns: ['**/StoreProvider'],
       },
     ],
     'zavalition-fsd/public-api-imports': [

@@ -1,11 +1,20 @@
 import React, { memo } from 'react';
 
+import { ColumnsList } from "../ColumnsList/ColumnsList";
+
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+
 import cls from './MainPage.module.scss'
 
-const MainPage = () => (
-    <main
-      className={cls.MainPage}
-     />
-  );
+const MainPage = () => {
+  const dispatch = useAppDispatch();
+
+  return (
+    <main className={cls.MainPage}>
+      <ColumnsList />
+    </main>
+  )
+
+}
 
 export default memo(MainPage);

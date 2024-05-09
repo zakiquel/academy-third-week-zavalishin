@@ -1,12 +1,30 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 
-import { StateSchema } from "./StateSchema";
+import { StateSchema, ThunkExtraArg } from "./StateSchema";
+
+import { columnApi } from "@/entities/Column";
+import { $api } from "@/shared/api/api";
 
 export function createReduxStore(initialState?: StateSchema) {
-  return configureStore<StateSchema>({
-    reducer: {
-    },
+  const rootReducers: ReducersMapObject<StateSchema> = {
+    [columnApi.reducerPath]: columnApi.reducer,
+  }
+
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+  };
+
+  return configureStore({
+    reducer: rootReducers,
     devTools: __IS_DEV__,
-    preloadedState: initialState
-  })
+    preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: extraArg,
+        },
+      }).concat(columnApi.middleware),
+  });
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

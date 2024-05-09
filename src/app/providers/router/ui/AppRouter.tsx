@@ -3,10 +3,13 @@ import { Route, type RouteProps, Routes } from 'react-router-dom'
 
 import { routeConfig } from '../config/routeConfig'
 
+import { PageLoader } from "@/widgets/PageLoader";
+
 const AppRouter = () => {
   const renderWithWrapper = useCallback((route: RouteProps) => {
     const element = (
-      <Suspense fallback='Загрузка...'>
+      <Suspense fallback={ <PageLoader /> }
+      >
         {route.element}
       </Suspense>
     )

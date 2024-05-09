@@ -1,0 +1,32 @@
+.Column {
+  display: flex;
+  flex-direction: column;
+  background: var(--column-brown);
+  border-radius: 10px;
+  gap: 5px;
+  padding: 10px;
+  width: 350px;
+  max-height: calc(90vh - var(--navbar-height));
+  overflow-x: hidden;
+  border: 1px solid var(--border);
+
+  button {
+    font: var(--font-s);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font: var(--font-l);
+  font-weight: 700;
+}
+
+.create {
+  display: flex;
+  justify-content: left;
+}

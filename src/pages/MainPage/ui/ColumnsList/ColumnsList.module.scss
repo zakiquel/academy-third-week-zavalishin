@@ -1,0 +1,27 @@
+.ColumnsList {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.Suggestion {
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.addContainer {
+  width: 100px;
+  min-height: calc(80vh - var(--navbar-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    font-weight: 700;
+    border-radius: 50%;
+  }
+}
