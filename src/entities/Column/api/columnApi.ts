@@ -1,11 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { Column, Task } from "../model/types/column";
-
-export interface addTask {
-  columnId: string;
-  task: Task;
-}
+import { type Column } from "../model/types/column";
 
 export const columnApi = createApi({
   reducerPath: 'api',
@@ -14,7 +9,7 @@ export const columnApi = createApi({
   }),
   tagTypes: ['Column'],
   endpoints: (build) => ({
-    getColumns: build.query<Column[], null>({
+    getColumns: build.query<Column[], string>({
       query: () => ({
         url: '/columns',
       }),
@@ -34,16 +29,8 @@ export const columnApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags: ['Column'],
-    }),
-    addTask: build.mutation<Column, addTask>({
-      query: ({ columnId, task }) => ({
-        url: `/columns/${columnId}`,
-        method: 'PATCH',
-        body: task,
-      }),
-      invalidatesTags: ['Column'],
-    }),
+    })
   }),
 });
 
-export const useColumns = columnApi.useGetColumnsQuery;
+export const getColumns = columnApi.endpoints?.getColumns.initiate;

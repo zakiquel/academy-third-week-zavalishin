@@ -29,7 +29,7 @@
           "complexity": "Easy"
         },
         {
-          "id": "1",
+          "id": "4",
           "title": "Task Title",
           "description": "Task Description",
           "type": "Practice",
@@ -37,7 +37,7 @@
           "complexity": "Hard"
         },
         {
-          "id": "2",
+          "id": "5",
           "title": "Task Title",
           "description": "Task Description",
           "type": "Communication",
@@ -45,7 +45,7 @@
           "complexity": "Medium"
         },
         {
-          "id": "3",
+          "id": "6",
           "title": "Task Title",
           "description": "Task Description",
           "type": "Education",
@@ -53,7 +53,7 @@
           "complexity": "Easy"
         },
         {
-          "id": "1",
+          "id": "7",
           "title": "Task Title",
           "description": "Task Description",
           "type": "Practice",
@@ -61,7 +61,7 @@
           "complexity": "Hard"
         },
         {
-          "id": "2",
+          "id": "8",
           "title": "Task Title",
           "description": "Task Description",
           "type": "Communication",
@@ -69,7 +69,7 @@
           "complexity": "Medium"
         },
         {
-          "id": "3",
+          "id": "9",
           "title": "Task Title",
           "description": "Task Description",
           "type": "Education",
@@ -77,10 +77,6 @@
           "complexity": "Easy"
         }
       ]
-    },
-    {
-      "title": "fdfdsf",
-      "id": "cC9z7bA"
     }
   ]
 }

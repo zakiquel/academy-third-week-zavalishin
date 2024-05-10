@@ -1,0 +1,57 @@
+.Wrapper {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.label {
+  margin-right: 5px;
+}
+
+.select {
+  display: flex;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 5px var(--light);
+  border-radius: 5px;
+
+  &:focus {
+    outline: 2px solid var(--primary-color);
+  }
+
+  &:hover {
+    box-shadow: 0 2px 8px var(--primary-color);
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 100%;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 5px var(--light);
+}
+
+.option {
+  padding: 15px 10px;
+  background: var(--white);
+
+  &:hover {
+    background-color: var(--column-cherry);
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 35%;
+  right: 5%;
+}
+
+.readonly {
+  opacity: 0.8;
+}

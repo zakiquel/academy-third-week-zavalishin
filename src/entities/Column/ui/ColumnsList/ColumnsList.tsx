@@ -1,11 +1,12 @@
 import { memo, useState } from 'react';
 
-import { AddColumnModal } from '../AddColumnModal/AddColumnModal';
+import { columnApi } from '../../api/columnApi';
+import { ColumnListItem } from "../ColumnListItem/ColumnListItem";
+import { AddColumnModal } from "../addColumn/AddColumnModal/AddColumnModal";
 
-import { ColumnListItem, columnApi } from '@/entities/Column';
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { PageLoader } from "@/widgets/PageLoader";
+import { Loader } from "@/shared/ui/Loader";
 
 import cls from './ColumnsList.module.scss';
 
@@ -19,18 +20,10 @@ export const ColumnsList = memo((props: ColumnsListProps) => {
   } = props;
 
   const [showColumnModal, setShowColumnModal] = useState<boolean>(false);
-  const [showConfirmModal, setShowConfirmModal] = useState<boolean>(false);
-  const { isLoading, data, error } = columnApi.useGetColumnsQuery(null);
+  const { isLoading, data, error, refetch } = columnApi.useGetColumnsQuery('');
 
   const [deleteColumn, { isLoading: isLoadingColumnDelete, isError: isErrorColumnDelete
   }] = columnApi.useDeleteColumnMutation()
-
-  const [createTask, { isLoading: createTaskLoading, error: createTaskError
-  }] = columnApi.useAddTaskMutation();
-
-  const onShowConfirmModal = () => {
-    setShowConfirmModal(true);
-  }
 
   const onShowAddColumnModal = () => {
     setShowColumnModal(true);
@@ -41,7 +34,7 @@ export const ColumnsList = memo((props: ColumnsListProps) => {
   }
 
   if (isLoading) {
-    return <PageLoader />
+    return <Loader />
   }
 
   if (!data) {
@@ -60,9 +53,10 @@ export const ColumnsList = memo((props: ColumnsListProps) => {
     <div className={classNames(cls.ColumnsList, {}, [className])}>
       {data.map((item) => (
         <ColumnListItem
+          key={item.title}
           column={item}
           onDelete={deleteColumn}
-          showModal={onShowConfirmModal}
+          refetch={refetch}
         />
       ))}
       <div className={cls.addContainer}>

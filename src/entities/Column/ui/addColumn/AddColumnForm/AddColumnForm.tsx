@@ -1,6 +1,8 @@
 import { memo, useCallback, useState } from 'react';
 
-import { columnApi, Column } from "@/entities/Column";
+import { columnApi } from "../../../api/columnApi";
+import { Column } from '../../../model/types/column'
+
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Input } from "@/shared/ui/Input";
 

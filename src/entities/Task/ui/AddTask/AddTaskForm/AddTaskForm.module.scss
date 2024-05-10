@@ -1,0 +1,10 @@
+.AddTaskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: all 0.4s ease;
+}
+
+.title {
+  font: var(--font-m)
+}

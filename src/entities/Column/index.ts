@@ -1,4 +1,8 @@
-export { ColumnListItem } from "./ui/ColumnListItem"
-export * from "./model/types/column"
-export { useColumns } from "./api/columnApi"
-export { columnApi } from "./api/columnApi"
+export { ColumnsList } from "./ui/ColumnsList/ColumnsList"
+export type {
+  TaskType,
+  TaskStatus,
+  TaskComplexity,
+  Column,
+} from "./model/types/column"
+export { columnApi, getColumns } from "./api/columnApi"

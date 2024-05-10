@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 
-import { ColumnsList } from "../ColumnsList/ColumnsList";
-
+import { ColumnsList } from '@/entities/Column';
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 import cls from './MainPage.module.scss'
