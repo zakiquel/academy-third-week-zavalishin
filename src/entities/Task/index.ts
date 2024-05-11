@@ -3,4 +3,4 @@ export { AddTaskModal } from "@/entities/Task/ui/AddTask/AddTaskModal/AddTaskMod
 export { type Task } from "./model/types/task"
 export { createTask } from "./model/services/createTask"
 export type { TaskSchema } from "./model/types/taskSchema"
-export { taskSliceReducer } from "./model/slice/taskSlice"
+export { taskSliceReducer, taskSliceActions } from "./model/slice/taskSlice"

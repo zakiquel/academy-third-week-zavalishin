@@ -1,12 +1,13 @@
 import React, { memo } from 'react';
 import { useSelector } from "react-redux";
 
-import { createTask } from '../../model/services/createTask';
+import { createTask } from '../..';
 import { deleteTask } from '../../model/services/deleteTask';
 import { taskSliceActions } from '../../model/slice/taskSlice';
 import { Task } from '../../model/types/task'
 
 import { StateSchema } from "@/app/providers/StoreProvider";
+import { columnApi } from "@/entities/Column";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 
@@ -25,12 +26,12 @@ export const TaskItem = memo((props: TaskProps) => {
     task,
   } = props;
 
-  const { id, status, type, title, description, complexity } = task;
-
   const dispatch = useAppDispatch()
+  const { refetch } = columnApi.useGetColumnsQuery('');
+
+  const { id, status, type, title, description, complexity } = task;
   const taskFromState = useSelector((state: StateSchema) => state.task.task)
   const columnIdFromState = useSelector((state: StateSchema) => state.task.columnId)
-
 
   const onDragStartHandler = () => {
     dispatch(taskSliceActions.setTask({ id, status, type, title, description, complexity }))
@@ -38,9 +39,9 @@ export const TaskItem = memo((props: TaskProps) => {
 
   const onDropHandler = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault()
-
-    dispatch(deleteTask({ columnId: columnIdFromState, taskId: taskFromState.id }))
-    dispatch(createTask({ columnId, task: taskFromState }))
+    dispatch(deleteTask({ columnId, taskId: taskFromState.id }))
+    dispatch(createTask({ columnId: columnIdFromState, task: taskFromState })).then(
+      () => refetch())
   }
 
   return (

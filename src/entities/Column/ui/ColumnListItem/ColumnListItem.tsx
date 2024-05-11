@@ -2,9 +2,10 @@ import React, { memo, useState } from 'react';
 
 import { Column } from '../../model/types/column';
 
-import { TaskItem, AddTaskModal } from "@/entities/Task";
+import { TaskItem, AddTaskModal , taskSliceActions } from "@/entities/Task";
 import Cross from "@/shared/assets/icons/cross.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Icon } from "@/shared/ui/Icon";
 
@@ -26,6 +27,7 @@ export const ColumnListItem = memo((props: ColumnProps) => {
     refetch,
   } = props;
 
+  const dispatch = useAppDispatch()
   const [showTaskModal, setShowTaskModal] = useState<boolean>(false);
 
   const onDeleteHandler = () => {
@@ -37,10 +39,15 @@ export const ColumnListItem = memo((props: ColumnProps) => {
     refetch()
   }
 
+  function onDragOverHandler(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault()
+    dispatch(taskSliceActions.setColumn(column.id))
+  }
+
   return (
     <div
       className={classNames(cls.Column, {}, [className, `${column.id}`])}
-      onDragOver={e => {e.preventDefault()}}
+      onDragOver={e => onDragOverHandler(e)}
     >
       <div className={cls.header}>
         <h1 className={cls.title}>{column.title}</h1>
