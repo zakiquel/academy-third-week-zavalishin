@@ -1,8 +1,8 @@
-import { memo, useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import { Column } from '../../model/types/column';
 
-import { TaskItem , AddTaskModal } from "@/entities/Task";
+import { TaskItem, AddTaskModal } from "@/entities/Task";
 import Cross from "@/shared/assets/icons/cross.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
@@ -38,7 +38,10 @@ export const ColumnListItem = memo((props: ColumnProps) => {
   }
 
   return (
-    <div className={classNames(cls.Column, {}, [className])}>
+    <div
+      className={classNames(cls.Column, {}, [className, `${column.id}`])}
+      onDragOver={e => {e.preventDefault()}}
+    >
       <div className={cls.header}>
         <h1 className={cls.title}>{column.title}</h1>
         <Button
@@ -59,11 +62,8 @@ export const ColumnListItem = memo((props: ColumnProps) => {
       {column.tasks && column.tasks.map((item) => (
         <TaskItem
           key={item.id}
-          title={item.title}
-          description={item.description}
-          complexity={item.complexity}
-          type={item.type}
-          status={item.status}
+          task={item}
+          columnId={column.id}
         />
       ))}
       <AddTaskModal

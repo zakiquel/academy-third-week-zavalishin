@@ -3,11 +3,13 @@ import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { StateSchema, ThunkExtraArg } from "./StateSchema";
 
 import { columnApi } from "@/entities/Column";
+import { taskSliceReducer } from "@/entities/Task";
 import { $api } from "@/shared/api/api";
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
-    [columnApi.reducerPath]: columnApi.reducer,
+    task: taskSliceReducer,
+    [columnApi.reducerPath]: columnApi.reducer
   }
 
   const extraArg: ThunkExtraArg = {
