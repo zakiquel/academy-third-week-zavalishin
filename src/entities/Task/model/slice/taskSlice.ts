@@ -14,6 +14,7 @@ const initialState: TaskSchema = {
     complexity: 'Easy' as TaskComplexity
   },
   columnId: '',
+  isLoading: false,
 }
 
 export const taskSlice = createSlice({
@@ -25,6 +26,9 @@ export const taskSlice = createSlice({
     },
     setColumn: (state, action: PayloadAction<string>) => {
       state.columnId = action.payload
+    },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload
     },
   }
 })

@@ -21,6 +21,16 @@
   font-weight: 600;
 }
 
+.delete {
+  color: var(--delete);
+  display: flex;
+  justify-content: right;
+
+  span {
+    font-weight: 600;
+  }
+}
+
 .description {
   font: var(--font-m);
 }

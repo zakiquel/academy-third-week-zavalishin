@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { taskSliceActions } from '../..';
+
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { Column, getColumn, updateColumns } from "@/entities/Column";
 
@@ -16,6 +18,7 @@ export const deleteTask = createAsyncThunk<
   'task/createTask',
   async ({ columnId, taskId }, { rejectWithValue, dispatch }) => {
     try {
+      dispatch(taskSliceActions.setIsLoading(true));
       const data = await dispatch(getColumn(columnId)).unwrap();
 
       const { tasks } = data;
@@ -33,7 +36,7 @@ export const deleteTask = createAsyncThunk<
       if (!response) {
         throw new Error();
       }
-
+      dispatch(taskSliceActions.setIsLoading(false));
       return response;
     } catch (e) {
       return rejectWithValue('Fetching error');

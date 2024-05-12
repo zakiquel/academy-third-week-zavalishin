@@ -13,16 +13,7 @@
     {
       "title": "dsa",
       "id": 3,
-      "tasks": [
-        {
-          "id": "c1f65eff-c9e6-4eb8-80e8-fae8794bc789",
-          "status": "Not Started",
-          "type": "Communication",
-          "title": "df",
-          "description": "dfs",
-          "complexity": "Hard"
-        }
-      ]
+      "tasks": []
     }
   ]
 }
