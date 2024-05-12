@@ -1,9 +1,10 @@
 .ColumnsList {
-  width: 100%;
   display: flex;
   gap: 25px;
-  overflow: hidden;
   position: relative;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .suggestion,
@@ -48,4 +49,19 @@
   position: absolute;
   top: 50%;
   right: 50%;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
 }

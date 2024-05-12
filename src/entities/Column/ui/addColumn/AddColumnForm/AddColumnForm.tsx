@@ -64,7 +64,7 @@ export const AddColumnForm = memo((props: AddColumnFormProps) => {
               theme={ButtonTheme.OUTLINE}
               className={cls.button}
               onClick={onButtonClick}
-              disabled={isLoading}
+              disabled={isLoading || columnName === ''}
               fullWidth
             >
               Создать список задач

@@ -5,9 +5,9 @@
   border-radius: 10px;
   gap: 5px;
   padding: 10px;
-  width: 350px;
-  max-height: calc(90vh - var(--navbar-height));
-  overflow-x: hidden;
+  min-width: 360px;
+  height: calc(90vh - var(--navbar-height));
+  overflow-y: auto;
   border: 1px solid var(--border);
   position: relative;
 
@@ -41,4 +41,10 @@
   position: absolute;
   top: 40%;
   right: 40%;
+}
+
+@media screen and (max-width: 400px) {
+ .ColumnListItem {
+   width: 200px;
+ }
 }

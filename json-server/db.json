@@ -1,19 +1,18 @@
 {
   "columns": [
     {
-      "title": "New dsds",
+      "title": "вывы",
       "id": 1,
-      "tasks": []
-    },
-    {
-      "title": "dsad",
-      "id": 2,
-      "tasks": []
-    },
-    {
-      "title": "dsa",
-      "id": 3,
-      "tasks": []
+      "tasks": [
+        {
+          "id": "c90fcfd4-d6bd-4168-9bdc-e0821c95b2ea",
+          "title": "вы",
+          "description": "вы",
+          "type": "Communication",
+          "complexity": "Hard",
+          "status": "Not Started"
+        }
+      ]
     }
   ]
 }

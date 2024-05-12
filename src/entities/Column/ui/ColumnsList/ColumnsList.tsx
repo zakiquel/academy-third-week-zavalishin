@@ -38,7 +38,7 @@ export const ColumnsList = memo(({ className }: ColumnsListProps) => {
           theme={ButtonTheme.CLEAR}
           onClick={() => setShowColumnModal(true)}
         >
-          Создать заметку
+          Создать список задач
         </Button>
         <AddColumnModal
           isOpen={showColumnModal}
