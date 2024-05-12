@@ -1,5 +1,6 @@
 import React, { memo, useState } from 'react';
 
+import { columnApi } from '../..';
 import { Column } from '../../model/types/column';
 
 import { TaskItem, AddTaskModal , taskSliceActions } from "@/entities/Task";
@@ -8,6 +9,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Icon } from "@/shared/ui/Icon";
+import { Loader } from "@/shared/ui/Loader";
 
 import cls from './ColumnListItem.module.scss';
 
@@ -15,7 +17,6 @@ import cls from './ColumnListItem.module.scss';
 interface ColumnProps {
   className?: string;
   column: Column;
-  onDelete: (column: Column) => void;
   refetch: () => void;
 }
 
@@ -23,15 +24,17 @@ export const ColumnListItem = memo((props: ColumnProps) => {
   const {
     className,
     column,
-    onDelete,
     refetch,
   } = props;
+
+  const [deleteColumn, { isLoading, isError
+  }] = columnApi.useDeleteColumnMutation()
 
   const dispatch = useAppDispatch()
   const [showTaskModal, setShowTaskModal] = useState<boolean>(false);
 
   const onDeleteHandler = () => {
-    onDelete(column)
+    deleteColumn(column)
   }
 
   const onCloseAddTaskModalHandler = () => {
@@ -46,7 +49,7 @@ export const ColumnListItem = memo((props: ColumnProps) => {
 
   return (
     <div
-      className={classNames(cls.Column, {}, [className, `${column.id}`])}
+      className={classNames(cls.ColumnListItem, {}, [className])}
       onDragOver={e => onDragOverHandler(e)}
     >
       <div className={cls.header}>
@@ -55,30 +58,38 @@ export const ColumnListItem = memo((props: ColumnProps) => {
           theme={ButtonTheme.CLEAR}
           className={cls.cross}
           onClick={onDeleteHandler}
+          disabled={isLoading}
         >
           <Icon Svg={Cross} />
         </Button>
       </div>
-      <Button
-        theme={ButtonTheme.CLEAR}
-        className={cls.create}
-        onClick={() => setShowTaskModal(true)}
-      >
-        Создать задачу
-      </Button>
-      {column.tasks && column.tasks.map((item) => (
-        <TaskItem
-          key={item.id}
-          task={item}
-          columnId={column.id}
-        />
-      ))}
-      <AddTaskModal
-        columnId={column.id}
-        isOpen={showTaskModal}
-        onClose={onCloseAddTaskModalHandler}
-      />
+      {isError && <span>Ошибка удаления</span> }
+      {isLoading ?
+        <Loader className={cls.loader} /> :
+        <>
+          <Button
+            theme={ButtonTheme.CLEAR}
+            className={cls.create}
+            onClick={() => setShowTaskModal(true)}
+          >
+            <span>Создать задачу</span>
+          </Button>
+          {column.tasks && column.tasks.map((item) => (
+            <TaskItem
+              key={item.id}
+              task={item}
+              columnId={column.id}
+            />
+          ))}
+          <AddTaskModal
+            columnId={column.id}
+            isOpen={showTaskModal}
+            onClose={onCloseAddTaskModalHandler}
+          />
+        </>
+      }
     </div>
   );
 });
+
 

@@ -9,7 +9,7 @@ import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange' | 'readOnly'
+  'value' | 'onChange' | 'readOnly' | 'max'
 >;
 
 interface InputProps extends HTMLInputProps {
@@ -19,6 +19,7 @@ interface InputProps extends HTMLInputProps {
   readonly?: boolean;
   onChange?: (value: string) => void;
   value?: string | number;
+  max?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -33,6 +34,7 @@ export const Input = memo((props: InputProps) => {
     id,
     value,
     required,
+    max,
     ...otherProps
   } = props;
 
@@ -43,6 +45,7 @@ export const Input = memo((props: InputProps) => {
 
   const mods: Mods = {
     [cls.readonly]: readonly,
+    [cls.max]: max,
   };
 
   return (

@@ -1,8 +1,8 @@
 export { ColumnsList } from "./ui/ColumnsList/ColumnsList"
-export type {
+export {
   TaskType,
   TaskStatus,
   TaskComplexity,
-  Column,
 } from "./model/types/column"
+export type { Column } from "./model/types/column"
 export { columnApi, getColumns } from "./api/columnApi"

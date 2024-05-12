@@ -1,7 +1,7 @@
-.Column {
+.ColumnListItem {
   display: flex;
   flex-direction: column;
-  background: var(--column-brown);
+  background: var(--column-color);
   border-radius: 10px;
   gap: 5px;
   padding: 10px;
@@ -9,6 +9,7 @@
   max-height: calc(90vh - var(--navbar-height));
   overflow-x: hidden;
   border: 1px solid var(--border);
+  position: relative;
 
   button {
     font: var(--font-s);
@@ -29,4 +30,15 @@
 .create {
   display: flex;
   justify-content: left;
+
+  span {
+    font-weight: 600;
+    color: var( --inverted-secondary-color);
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 40%;
+  right: 40%;
 }

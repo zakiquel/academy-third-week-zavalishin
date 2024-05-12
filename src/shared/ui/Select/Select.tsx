@@ -1,20 +1,23 @@
-import React, { useMemo, useState } from 'react';
+import React, { ChangeEvent, useMemo } from 'react';
 
 // eslint-disable-next-line zavalition-fsd/layer-imports
-import { type TaskComplexity } from "@/entities/Column";
-import Arrow from "@/shared/assets/icons/arrow.svg";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
 
 import cls from './Select.module.scss';
 
+export interface SelectOption<T extends string> {
+  value: T;
+  content: string;
+}
+
 interface SelectProps<T extends string> {
   className?: string;
   label?: string;
-  options?: string[];
-  value: string;
-  id?: string;
+  options?: SelectOption<T>[];
+  value: T;
   readonly?: boolean;
-  onChange: (value: TaskComplexity) => void;
+  onChange?: (value: T) => void;
+  max?: boolean;
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
@@ -25,67 +28,37 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
     readonly,
     value,
     onChange,
-    id,
+    max
   } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+    onChange?.(e.target.value as T);
   };
 
-  const filteredOptions = useMemo(() => {
-    if (!options) return [];
-    return options.filter(opt => opt.toLowerCase().includes(searchTerm.toLowerCase()));
-  }, [options, searchTerm]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setSearchTerm(value);
-    onChange?.(value as TaskComplexity);
-  };
-
-  const handleOptionClick = (optionValue: T) => {
-    onChange?.(optionValue as TaskComplexity);
-    toggleDropdown();
-  };
-
-  const optionList = filteredOptions.map((opt) => (
-    <div
-      key={opt}
-      className={cls.option}
-      onClick={() => handleOptionClick(opt as T)}
-    >
-      {opt}
-    </div>
-  ));
+  const optionList = useMemo(() =>
+    options?.map((opt) => (
+      <option value={opt.value} className={cls.option} key={opt.value}>
+        {opt.content}
+      </option>
+    )), [options]
+  )
 
   const mods: Mods = {
     [cls.readonly]: readonly,
-    [cls.open]: isOpen
+    [cls.max]: max,
   };
 
   return (
     <div className={classNames(cls.Wrapper, mods, [className])}>
-      <div className={cls.select} onClick={toggleDropdown}>
-        <input
-          id={id}
-          type="text"
-          value={value}
-          placeholder={label}
-          onChange={handleChange}
-          className={cls.input}
-        />
-        <span className={cls.arrow}>
-          <Arrow />
-        </span>
-      </div>
-      {isOpen &&
-        <div className={cls.dropdown}>
-          {optionList}
-        </div>
-      }
+      {label && <span className={cls.label}>{label}</span>}
+      <select
+        disabled={readonly}
+        className={cls.select}
+        value={value}
+        onChange={onChangeHandler}
+      >
+        {optionList}
+      </select>
     </div>
   );
 };

@@ -1,57 +1,34 @@
 .Wrapper {
-  margin-top: 10px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .label {
   margin-right: 5px;
+  color: var(--secondary-color);
+  font-weight: 600;
 }
 
 .select {
-  display: flex;
-  position: relative;
-}
-
-.input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 5px var(--light);
+  background: none;
+  outline: none;
+  color: var(--primary-color);
+  padding: 5px 10px;
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
-
-  &:focus {
-    outline: 2px solid var(--primary-color);
-  }
-
-  &:hover {
-    box-shadow: 0 2px 8px var(--primary-color);
-  }
-}
-
-.dropdown {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
   width: 100%;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 5px var(--light);
 }
 
 .option {
-  padding: 15px 10px;
-  background: var(--white);
-
-  &:hover {
-    background-color: var(--column-cherry);
-  }
-}
-
-.arrow {
-  position: absolute;
-  top: 35%;
-  right: 5%;
+  color: var(--primary-colorcolor);
+  background: var(--inverted-bg-color);
 }
 
 .readonly {
   opacity: 0.8;
+}
+
+.max {
+  width: 100%;
 }

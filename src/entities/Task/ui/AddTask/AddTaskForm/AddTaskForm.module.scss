@@ -1,10 +1,21 @@
 .AddTaskForm {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
   transition: all 0.4s ease;
+  width: 350px;
 }
 
 .title {
-  font: var(--font-m)
+  font: var(--font-m);
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.button {
+  border-radius: 8px;
+
+  span {
+    font-weight: 600;
+  }
 }

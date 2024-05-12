@@ -4,8 +4,6 @@ import { AddColumnForm } from '../AddColumnForm/AddColumnForm';
 
 import { Modal } from "@/shared/ui/Modal";
 
-import cls from './AddColumnModal.module.scss';
-
 interface AddColumnModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -18,9 +16,9 @@ export const AddColumnModal = memo((props: AddColumnModalProps) => {
   } = props;
   return (
     <Modal
-      className={cls.AddColumnModal}
       isOpen={isOpen}
       onClose={onClose}
+      lazy
     >
       <AddColumnForm
         onSuccess={onClose}

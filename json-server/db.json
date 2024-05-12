@@ -1,37 +1,42 @@
 {
   "columns": [
     {
-      "id": "1",
-      "title": "Column Title",
-      "tasks": []
-    },
-    {
-      "title": "выфвыв",
-      "id": "ah1eUG3",
+      "title": "fsdfsdf",
+      "id": 1,
       "tasks": [
         {
-          "id": "1",
+          "id": "c7d6063a-fbd2-4ca4-91a4-9f036c02d5e7",
           "status": "Done",
           "type": "Practice",
-          "title": "Task Title",
-          "description": "Здесь каждому классу Hard, Medium и Easy присваиваются разные цвета для background-color в псевдоэлементе ::before, чтобы изменить цвет точки в зависимости от уровня сложности.",
-          "complexity": "Hard"
-        }
-      ]
-    },
-    {
-      "title": "пап",
-      "id": "SlDwjib",
-      "tasks": [
-        {
-          "id": "42d82d97-8fe7-4262-93dc-509dfad5e212",
-          "status": "Not Started",
-          "type": "Communication",
-          "title": "вы",
-          "description": "вы",
+          "title": "adsd",
+          "description": "dasdas",
           "complexity": "Medium"
         }
       ]
+    },
+    {
+      "title": "fsdfsd",
+      "id": 2,
+      "tasks": [
+        {
+          "id": "bcd16341-2175-434a-bf08-304a04ebe4fe",
+          "status": "Done",
+          "type": "Practice",
+          "title": "dasdas",
+          "description": "asdas",
+          "complexity": "Medium"
+        }
+      ]
+    },
+    {
+      "title": "fsdfsd",
+      "id": 3,
+      "tasks": []
+    },
+    {
+      "title": "fsdfs",
+      "id": 4,
+      "tasks": []
     }
   ]
 }

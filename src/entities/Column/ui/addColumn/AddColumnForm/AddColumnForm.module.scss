@@ -1,13 +1,23 @@
 .AddColumnForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
   gap: 20px;
 }
 
 .title {
-  font: var(--font-m)
+  font: var(--font-l);
+  display: flex;
+  justify-content: center;
 }
 
 .button {
   border-radius: 5px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
 }

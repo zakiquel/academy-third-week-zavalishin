@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { type Column } from "../model/types/column";
+import { Column } from "../model/types/column";
 
 export const columnApi = createApi({
   reducerPath: 'api',

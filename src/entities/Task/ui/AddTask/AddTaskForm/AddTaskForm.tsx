@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { createTask } from "../../../model/services/createTask";
@@ -10,7 +10,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Input } from "@/shared/ui/Input";
-import { Select } from "@/shared/ui/Select";
+import { Select, SelectOption } from "@/shared/ui/Select";
 
 import cls from './AddTaskForm.module.scss';
 
@@ -30,17 +30,57 @@ export const AddTaskForm = memo((props: AddTaskFormProps) => {
   const [taskType, setTaskType] = useState<string>('');
   const [taskStatus, setTaskStatus] = useState<string>('');
 
-  const complexityOptions = [
-    'Hard', 'Medium', 'Easy'
-  ]
 
-  const typeOptions = [
-    'Practice', 'Communication', 'Education'
-  ]
+  const complexityOptions = useMemo<SelectOption<TaskComplexity>[]>(
+    () => [
+      {
+        value: TaskComplexity.HARD,
+        content: 'Hard',
+      },
+      {
+        value: TaskComplexity.MEDIUM,
+        content: 'Medium',
+      },
+      {
+        value: TaskComplexity.EASY,
+        content: 'Easy',
+      },
+    ], []
+  );
 
-  const statusOptions = [
-    'Not Started', 'In Progress'
-  ]
+  const typeOptions = useMemo<SelectOption<TaskType>[]>(
+    () => [
+      {
+        value: TaskType.COMMUNICATION,
+        content: 'Communication',
+      },
+      {
+        value: TaskType.PRACTICE,
+        content: 'Practice',
+      },
+      {
+        value: TaskType.EDUCATION,
+        content: 'Education',
+      },
+    ], []
+  );
+
+  const statusOptions = useMemo<SelectOption<TaskStatus>[]>(
+    () => [
+      {
+        value: TaskStatus.NOT_STARTED,
+        content: 'Not Started',
+      },
+      {
+        value: TaskStatus.DONE,
+        content: 'Done',
+      },
+      {
+        value: TaskStatus.IN_PROGRESS,
+        content: 'In Progress',
+      },
+    ], []
+  );
 
   const onButtonClick = useCallback(() => {
     const id = uuidv4();
@@ -79,28 +119,33 @@ export const AddTaskForm = memo((props: AddTaskFormProps) => {
         onChange={setTaskDescription}
       />
       <Select
-        label='Выберите сложность'
+        label='Сложность'
         options={complexityOptions}
         value={taskComplexity}
         onChange={setTaskComplexity}
+        max
       />
       <Select
-        label='Выберите тип задачи'
+        label='Тип задачи'
         options={typeOptions}
         value={taskType}
         onChange={setTaskType}
+        max
       />
       <Select
-        label='Выберите статус задачи'
+        label='Статус'
         options={statusOptions}
         value={taskStatus}
         onChange={setTaskStatus}
+        max
       />
       <Button
         theme={ButtonTheme.OUTLINE}
         onClick={onButtonClick}
+        className={cls.button}
+        disabled={taskName === '' || taskDescription === ''}
       >
-        Создать задачу
+        <span>Создать задачу</span>
       </Button>
     </form>
   );

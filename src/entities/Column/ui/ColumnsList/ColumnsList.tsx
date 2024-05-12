@@ -14,39 +14,38 @@ interface ColumnsListProps {
   className?: string;
 }
 
-export const ColumnsList = memo((props: ColumnsListProps) => {
-  const {
-    className
-  } = props;
+export const ColumnsList = memo(({ className }: ColumnsListProps) => {
 
   const [showColumnModal, setShowColumnModal] = useState<boolean>(false);
   const { isLoading, data, error, refetch } = columnApi.useGetColumnsQuery('');
 
-  const [deleteColumn, { isLoading: isLoadingColumnDelete, isError: isErrorColumnDelete
-  }] = columnApi.useDeleteColumnMutation()
-
-  const onShowAddColumnModal = () => {
-    setShowColumnModal(true);
-  }
-
-  const onCloseAddColumnModal = () => {
-    setShowColumnModal(false);
-  }
-
   if (isLoading) {
-    return <Loader />
+    return <Loader className={cls.loader} />
   }
 
-  if (!data) {
-    return <div className={cls.Suggestion}>
-      <h1>Создать заметку</h1>
-    </div>
+  if (!data || error) {
+    return (
+      <div className={cls.error}>
+        <span>Ошибка загрузки данных :(</span>
+      </div>
+    )
   }
 
-  if (error) {
-    return <div className={cls.Suggestion}>
-      <h1>Произошла ошибка при загрузке данных</h1>
-    </div>
+  if (data && data.length === 0) {
+    return (
+      <div className={cls.suggestion}>
+        <Button
+          theme={ButtonTheme.CLEAR}
+          onClick={() => setShowColumnModal(true)}
+        >
+          Создать заметку
+        </Button>
+        <AddColumnModal
+          isOpen={showColumnModal}
+          onClose={() => setShowColumnModal(false)}
+        />
+      </div>
+    )
   }
 
   return (
@@ -55,21 +54,20 @@ export const ColumnsList = memo((props: ColumnsListProps) => {
         <ColumnListItem
           key={item.title}
           column={item}
-          onDelete={deleteColumn}
           refetch={refetch}
         />
       ))}
       <div className={cls.addContainer}>
         <Button
           theme={ButtonTheme.OUTLINE}
-          onClick={onShowAddColumnModal}
+          onClick={() => setShowColumnModal(true)}
         >
           <span>+</span>
         </Button>
       </div>
       <AddColumnModal
         isOpen={showColumnModal}
-        onClose={onCloseAddColumnModal}
+        onClose={() => setShowColumnModal(false)}
       />
     </div>
   )
