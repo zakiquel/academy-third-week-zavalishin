@@ -1,42 +1,28 @@
 {
   "columns": [
     {
-      "title": "fsdfsdf",
+      "title": "New dsds",
       "id": 1,
-      "tasks": [
-        {
-          "id": "c7d6063a-fbd2-4ca4-91a4-9f036c02d5e7",
-          "status": "Done",
-          "type": "Practice",
-          "title": "adsd",
-          "description": "dasdas",
-          "complexity": "Medium"
-        }
-      ]
+      "tasks": []
     },
     {
-      "title": "fsdfsd",
+      "title": "dsad",
       "id": 2,
+      "tasks": []
+    },
+    {
+      "title": "dsa",
+      "id": 3,
       "tasks": [
         {
-          "id": "bcd16341-2175-434a-bf08-304a04ebe4fe",
-          "status": "Done",
-          "type": "Practice",
-          "title": "dasdas",
-          "description": "asdas",
-          "complexity": "Medium"
+          "id": "c1f65eff-c9e6-4eb8-80e8-fae8794bc789",
+          "status": "Not Started",
+          "type": "Communication",
+          "title": "df",
+          "description": "dfs",
+          "complexity": "Hard"
         }
       ]
-    },
-    {
-      "title": "fsdfsd",
-      "id": 3,
-      "tasks": []
-    },
-    {
-      "title": "fsdfs",
-      "id": 4,
-      "tasks": []
     }
   ]
 }

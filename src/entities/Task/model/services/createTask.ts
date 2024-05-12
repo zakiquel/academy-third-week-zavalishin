@@ -1,10 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 import { Task } from '../../model/types/task';
 
 import { ThunkConfig } from "@/app/providers/StoreProvider";
-import { Column } from "@/entities/Column";
+import { Column, getColumn, updateColumns } from "@/entities/Column";
 
 interface createTaskProps {
   columnId: string;
@@ -19,26 +18,29 @@ export const createTask = createAsyncThunk<
   'task/createTask',
   async ({ columnId, task }, { rejectWithValue, dispatch }) => {
     try {
-      const column = await axios.get<Column>(`http://localhost:8000/columns/${columnId}`);
+      const data = await dispatch(getColumn(columnId)).unwrap();
 
-      const { tasks } = column.data;
-      
+      if (!data) {
+        return rejectWithValue('No data');
+      }
+
+      const { tasks } = data;
+
       if (!tasks) {
-        const updatedColumn = { ...column.data, tasks: [task] }
-        const response = await axios.put<Column>(`http://localhost:8000/columns/${columnId}`, updatedColumn);
-        return response.data;
+        const updatedColumn = { ...data, tasks: [task] }
+        return await dispatch(updateColumns(updatedColumn)).unwrap();
       } 
         const updatedTasks = [...tasks, { ...task }]
 
-        const updatedColumn = { ...column.data, tasks: updatedTasks }
+        const updatedColumn = { ...data, tasks: updatedTasks }
 
-        const response = await axios.put<Column>(`http://localhost:8000/columns/${columnId}`, updatedColumn);
+        const response = await dispatch(updateColumns(updatedColumn)).unwrap();
 
-        if (!response.data) {
+        if (!response) {
           throw new Error();
         }
 
-        return response.data;
+        return response;
     } catch (e) {
       return rejectWithValue('Fetching error');
     }

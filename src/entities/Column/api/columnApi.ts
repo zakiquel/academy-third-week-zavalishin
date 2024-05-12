@@ -15,6 +15,20 @@ export const columnApi = createApi({
       }),
       providesTags: ['Column'],
     }),
+    getColumnById: build.query<Column, string>({
+      query: (columnId) => ({
+        url: `/columns/${columnId}`,
+      }),
+      providesTags: ['Column'],
+    }),
+    updateColumn: build.mutation<Column, Column>({
+      query: (column) => ({
+        url: `/columns/${column.id}`,
+        method: 'PATCH',
+        body: column,
+      }),
+      invalidatesTags: ['Column'],
+    }),
     addColumn: build.mutation<Column, Column>({
       query: (column) => ({
         url: `/columns`,
@@ -34,3 +48,5 @@ export const columnApi = createApi({
 });
 
 export const getColumns = columnApi.endpoints?.getColumns.initiate;
+export const getColumn = columnApi.endpoints?.getColumnById.initiate;
+export const updateColumns = columnApi.endpoints?.updateColumn.initiate;

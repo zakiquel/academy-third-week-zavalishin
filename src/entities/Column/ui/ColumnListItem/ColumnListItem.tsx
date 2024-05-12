@@ -1,8 +1,10 @@
 import React, { memo, useState } from 'react';
+import { useSelector } from "react-redux";
 
 import { columnApi } from '../..';
 import { Column } from '../../model/types/column';
 
+import { StateSchema } from "@/app/providers/StoreProvider";
 import { TaskItem, AddTaskModal , taskSliceActions } from "@/entities/Task";
 import Cross from "@/shared/assets/icons/cross.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -17,14 +19,12 @@ import cls from './ColumnListItem.module.scss';
 interface ColumnProps {
   className?: string;
   column: Column;
-  refetch: () => void;
 }
 
 export const ColumnListItem = memo((props: ColumnProps) => {
   const {
     className,
     column,
-    refetch,
   } = props;
 
   const [deleteColumn, { isLoading, isError
@@ -32,6 +32,7 @@ export const ColumnListItem = memo((props: ColumnProps) => {
 
   const dispatch = useAppDispatch()
   const [showTaskModal, setShowTaskModal] = useState<boolean>(false);
+  const columnIdFromState = useSelector((state: StateSchema) => state.task.columnId)
 
   const onDeleteHandler = () => {
     deleteColumn(column)
@@ -39,7 +40,6 @@ export const ColumnListItem = memo((props: ColumnProps) => {
 
   const onCloseAddTaskModalHandler = () => {
     setShowTaskModal(false)
-    refetch()
   }
 
   function onDragOverHandler(e: React.DragEvent<HTMLDivElement>) {

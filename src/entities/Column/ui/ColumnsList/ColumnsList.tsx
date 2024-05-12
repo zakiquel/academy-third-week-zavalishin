@@ -17,7 +17,7 @@ interface ColumnsListProps {
 export const ColumnsList = memo(({ className }: ColumnsListProps) => {
 
   const [showColumnModal, setShowColumnModal] = useState<boolean>(false);
-  const { isLoading, data, error, refetch } = columnApi.useGetColumnsQuery('');
+  const { isLoading, data, error } = columnApi.useGetColumnsQuery('');
 
   if (isLoading) {
     return <Loader className={cls.loader} />
@@ -54,7 +54,6 @@ export const ColumnsList = memo(({ className }: ColumnsListProps) => {
         <ColumnListItem
           key={item.title}
           column={item}
-          refetch={refetch}
         />
       ))}
       <div className={cls.addContainer}>

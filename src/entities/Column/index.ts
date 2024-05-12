@@ -5,4 +5,4 @@ export {
   TaskComplexity,
 } from "./model/types/column"
 export type { Column } from "./model/types/column"
-export { columnApi, getColumns } from "./api/columnApi"
+export { columnApi, getColumns, updateColumns, getColumn } from "./api/columnApi"

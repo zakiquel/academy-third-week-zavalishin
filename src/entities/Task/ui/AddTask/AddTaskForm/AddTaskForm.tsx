@@ -26,9 +26,9 @@ export const AddTaskForm = memo((props: AddTaskFormProps) => {
 
   const [taskName, setTaskName] = useState<string>('');
   const [taskDescription, setTaskDescription] = useState<string>('');
-  const [taskComplexity, setTaskComplexity] = useState<string>('');
-  const [taskType, setTaskType] = useState<string>('');
-  const [taskStatus, setTaskStatus] = useState<string>('');
+  const [taskComplexity, setTaskComplexity] = useState<TaskComplexity>(TaskComplexity.HARD);
+  const [taskType, setTaskType] = useState<TaskType>(TaskType.COMMUNICATION);
+  const [taskStatus, setTaskStatus] = useState<TaskStatus>(TaskStatus.NOT_STARTED);
 
 
   const complexityOptions = useMemo<SelectOption<TaskComplexity>[]>(
@@ -98,9 +98,9 @@ export const AddTaskForm = memo((props: AddTaskFormProps) => {
 
     setTaskName('')
     setTaskDescription('')
-    setTaskComplexity('')
-    setTaskType('')
-    setTaskStatus('')
+    setTaskComplexity(TaskComplexity.HARD)
+    setTaskType(TaskType.COMMUNICATION)
+    setTaskStatus(TaskStatus.NOT_STARTED)
   }, [columnId, dispatch, onSuccess, taskComplexity, taskDescription, taskName, taskStatus, taskType])
 
   return (
