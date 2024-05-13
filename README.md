@@ -70,3 +70,9 @@ npm run start:dev - запуск сервера + frontend проекта в dev
 - `npm run lint:ts` - Проверка ts файлов линтером
 - `npm run lint:ts:fix` - Исправление ts файлов линтером
 ----
+
+##### Работа с данными
+
+Взаимодействие с данными осуществляется с помощью redux toolkit.
+
+Запросы на сервер отправляются с помощью [RTK query](/src/entities/Column/api/columnApi.ts)
